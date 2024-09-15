@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+void rearrange(int arr[], int n) {
+    // First step: Encode both old and new values into the array
+    for (int i = 0; i < n; i++) {
+        arr[i] = arr[i] + (arr[arr[i]] % n) * n;
+    }
+
+    // Second step: Extract the new values
+    for (int i = 0; i < n; i++) {
+        arr[i] = arr[i] / n;
+    }
+}
+
+int main() {
+    int n;
+    
+    // Take user input for array size
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    int arr[n];
+    
+    // Input the elements
+    cout << "Enter " << n << " elements (0 to " << n-1 << "): ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    // Call the function to rearrange the array
+    rearrange(arr, n);
+
+    // Print the transformed array
+    cout << "Transformed array: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
