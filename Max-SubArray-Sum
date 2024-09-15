@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>  // For std::max
+using namespace std;
+
+int maxSubArraySum(const vector<int>& arr) {
+    int maxEndingHere = arr[0];  // Initialize with the first element
+    int maxSoFar = arr[0];       // Initialize with the first element
+    
+    // Traverse the array starting from the second element
+    for (size_t i = 1; i < arr.size(); i++) {
+        // Update maxEndingHere, choosing either the current element or the current element plus the previous sum
+        maxEndingHere = max(arr[i], maxEndingHere + arr[i]);
+        // Update maxSoFar to store the maximum sum found so far
+        maxSoFar = max(maxSoFar, maxEndingHere);
+    }
+
+    return maxSoFar;  // Return the maximum sum found
+}
+
+int main() {
+    int n;
+    
+    // Input the size of the array
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    vector<int> arr(n);  // Declare a vector to store the array elements
+    
+    // Input the array elements
+    cout << "Enter the array elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    // Call the function to find the subarray with the largest sum
+    int result = maxSubArraySum(arr);
+    
+    // Output the result
+    cout << "The sum of the subarray with the largest sum is: " << result << endl;
+
+    return 0;
+}
