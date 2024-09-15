@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cmath>  // For abs()
+
+void sortedSquares(int arr[], int n) {
+    int left = 0;
+    int right = n - 1;
+    int result[n];  
+    int index = n - 1;  // Start placing elements from the end of the result array
+
+    // Traverse from both ends of the array using two pointers
+    while (left <= right) {
+        int leftSquare = arr[left] * arr[left];
+        int rightSquare = arr[right] * arr[right];
+
+        if (leftSquare > rightSquare) {
+            result[index--] = leftSquare;  // Place the larger square at the current index
+            left++;  // Move the left pointer to the right
+        } else {
+            result[index--] = rightSquare;  // Place the larger square at the current index
+            right--;  // Move the right pointer to the left
+        }
+    }
+
+    // Print the result
+    std::cout << "Sorted squares of the array: ";
+    for (int i = 0; i < n; i++) {
+        std::cout << result[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int n;
+    
+    // Ask the user for input
+    std::cout << "Enter the number of elements in the array: ";
+    std::cin >> n;
+
+    int arr[n];  // Input array
+    std::cout << "Enter " << n << " sorted elements: ";
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+    }
+
+    // Call the function to sort the squares
+    sortedSquares(arr, n);
+
+    return 0;
+}
