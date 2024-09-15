@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>  // For abs()
-
+using namespace std;
 void sortedSquares(int arr[], int n) {
     int left = 0;
     int right = n - 1;
@@ -24,7 +24,7 @@ void sortedSquares(int arr[], int n) {
     // Print the result
     std::cout << "Sorted squares of the array: ";
     for (int i = 0; i < n; i++) {
-        std::cout << result[i] << " ";
+        cout << result[i] << " ";
     }
     std::cout << std::endl;
 }
@@ -33,13 +33,13 @@ int main() {
     int n;
     
     // Ask the user for input
-    std::cout << "Enter the number of elements in the array: ";
-    std::cin >> n;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
 
     int arr[n];  // Input array
-    std::cout << "Enter " << n << " sorted elements: ";
+    cout << "Enter " << n << " sorted elements: ";
     for (int i = 0; i < n; i++) {
-        std::cin >> arr[i];
+        cin >> arr[i];
     }
 
     // Call the function to sort the squares
