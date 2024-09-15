@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+
+int majorityElement(int nums[], int n) {
+    int count = 0;
+    int candidate = 0;
+
+    // Find the majority candidate
+    for (int i = 0; i < n; i++) {
+        if (count == 0) {
+            candidate = nums[i];
+        }
+        count += (nums[i] == candidate) ? 1 : -1;
+    }
+
+    // Step 2: Since the problem guarantees a majority element exists, we return the candidate
+    return candidate;
+}
+
+int main() {
+    int n;
+
+    // Ask user for input
+    std::cout << "Enter the number of elements in the array: ";
+    std::cin >> n;
+
+    int nums[n];
+    std::cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; i++) {
+        std::cin >> nums[i];
+    }
+
+    // Call the function and print the result
+    int result = majorityElement(nums, n);
+    std::cout << "The majority element is: " << result << std::endl;
+
+    return 0;
+}
